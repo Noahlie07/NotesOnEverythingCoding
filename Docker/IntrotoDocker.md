@@ -32,3 +32,31 @@ Docker Images:
 Docker Containers:
 - the thing that actually runs the image / running instance of an image.
 - multiple containers can run the same image (if you want to run an application on multiple containers)
+
+#### Docker Repositories  
+Docker Repositories are essentially online repositories that store and distribute docker images. Developers can push their own images in order to share them, and can also pull images from other developers to use.  
+Companies like MongoDB, Milvus, etc, push their applications' images onto docker repos so that everyone can run their application in docker. These images for large/well-known applications are called official **images**.  
+"Docker Hub" is the biggest docker registry, and contains lots of official images.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
