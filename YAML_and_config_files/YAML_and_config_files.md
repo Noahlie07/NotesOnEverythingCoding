@@ -7,8 +7,9 @@ In Web Dev, we need a config file to declare all the javascript packages we will
 Normally, config files can be written in multiple different languages; json, javascript, yaml, etc.  
 
 ## What is YAML?
-YAML is a data serialization language and is normally used for config files. Its difference from other config file languages is only its syntax, where it uses spacing and indentation for structure.  
-It is referred to with the dot extension .yaml or .yml
+YAML is a data serialization language and is normally used for config files. Its difference from other config file languages (json and xml) is only its syntax, where it uses spacing and indentation for structure. 
+It is referred to with the dot extension .yaml or .yml  
+**Use YAML checker to check for yaml file syntax**
 
 ### YAML syntax
 key-value pairs  
