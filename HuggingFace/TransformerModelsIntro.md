@@ -56,3 +56,21 @@ raw_inputs = [
 ]
 inputs = tokenizer(raw_inputs, padding=True, truncation=True, return_tensors="pt") #"pt" for pytorch tensors, "np" for numpy tensors
 ```
+
+### Second Step: Model  
+The model takes an input numerical tensor (produced by preprocessing) and generates an output numerical tensor (to be passed on to postprocessing).  
+The model needs to be loaded with the same checkpoint as the pre-processing.
+```
+from transformers import AutoModel
+
+checkpoint = "distilbert-base-uncased-finetuned-sst-2-english"
+model = AutoModel.from_pretrained(checkpoint)
+```
+The vector output by the Transformer module is usually large. It generally has three dimensions:
+- Batch size: The number of sequences processed at a time (2 in our example).
+- Sequence length: The length of the numerical representation of the sequence (16 in our example).
+- Hidden size: The vector dimension of each model input.
+```
+outputs = model(**inputs)
+# print(outputs.last_hidden_state.shape) to see the shape of the model's vector output
+```
