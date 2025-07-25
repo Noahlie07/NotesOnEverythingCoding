@@ -27,3 +27,32 @@ HF defines a default model for each task. However, we can specify the model we w
 # for example
 translator = pipeline("translation", model="Helsinki-NLP/opus-mt-fr-en")
 ```
+
+## Under the Hood of HF Pipelines  
+Pipelines handle all of preprocessing (converting text to numerical representations), passing inputs through the model, and postprocessing (cnverting numerical representations to text).  
+
+### First Step: Preprocessing with a Tokenizer  
+The first step inside a pipeline is to preprocess the text using a tokenizer.  
+We can either use the default tokenizer defined by the pipeline or define a specific tokenizer to use.  
+The process of tokenizing, in detail, involves:
+- Splitting the input into words, subwords, or symbols (like punctuation) that are called tokens
+- Mapping each token to an integer
+- Adding additional inputs that may be useful to the model
+Preprocessing needs to be done in exactly the same way as when the model was pretrained. This means we must use the same checkpoint weights as our model.
+Below is code for initializing a tokenizer.  
+```
+# For Example
+from transformers import AutoTokenizer
+
+checkpoint = "distilbert-base-uncased-finetuned-sst-2-english"
+tokenizer = AutoTokenizer.from_pretrained(checkpoint)
+```
+The tokenizer will take raw input (string or a list of strings), and output a tensor (of size num.of.inputs x vector_space_of_token_vector_representation).  
+This is because our model later on will only accept tensors.  
+```
+raw_inputs = [
+    "I've been waiting for a HuggingFace course my whole life.",
+    "I hate this so much!",
+]
+inputs = tokenizer(raw_inputs, padding=True, truncation=True, return_tensors="pt") #"pt" for pytorch tensors, "np" for numpy tensors
+```
