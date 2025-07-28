@@ -19,8 +19,26 @@ A model's save_pretrained() method saves the model’s weights and architecture 
 ```
 model.save_pretrained("directory_on_my_computer")
 ```
-This will save two files in the directory, config.json and pytorch_model.bin  
+This will save two files in the directory, **config.json** and **pytorch_model.bin**  
 - The config.json file has all the necessary attributes needed to build the model architecture. This file also contains some metadata, such as where the checkpoint originated and what 🤗 Transformers version you were using when you last saved the checkpoint.
 - The pytorch_model.bin file is known as the state dictionary; it contains all your model’s weights.
 The two files work together: the configuration file is needed to know about the model architecture, while the model weights are the parameters of the model.
+
+To reuse a saved model, use the from_pretrained() method again:
+```
+from transformers import AutoModel
+
+model = AutoModel.from_pretrained("directory_on_my_computer")
+```
+
+## Uploading our Models to the hub  
+At our terminal, run huggingface-cli login. (this can also be done in our code, just search up the way)  
+Then, push the model into the hub via `model.push_to_hub("my-model-name")`  
+
+Then, others can access my model via:
+```
+from transformers import AutoModel
+
+model = AutoModel.from_pretrained("your-username/my-awesome-model")
+```
 
