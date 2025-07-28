@@ -1,6 +1,19 @@
 # Tokenizers In Depth  
 This note dives deeper into the first step of a pipeline; Passing inputs to a tokenizer  
 
+## What is Tokenizing  
+It is a two-step process;  
+1. Converting text to smaller texts called tokens. There are multiple different methods for doing so (ex.character-based tokenization, word-based, subword-based, etc)
+2. Converting tokens to input IDs (numerical representation). Each tokenizer model will have different vocabularies (ways in which they map tokens to their input id)
+```
+Method 1:
+tokens = tokenizer.tokenize(original_text)
+input_ids = tokenizer.convert_tokens_to_ids(tokens)
+or
+Method 2:
+encoded_input = tokenizer(original_text) # encoded_input["input_ids"] for input_ids
+```
+
 ## What is the output of a tokenizer?
 ```
 original text = "Hello, I'm a single sentence!"
@@ -19,4 +32,12 @@ This will return a dictionary with three fields:
 We can decode input_ids back to our original text.  
 ```
 orginal text = tokenizer.decode(encoded_input["input_ids"])
+```
+
+## Specific Arguments of a Tokenizer  
+1. return_tensors = "pt"/"np" - tokenizer will return output in the form of pytorch or numpy tensors.
+2. padding inputs - If we ask the tokenizer to pad the inputs, it will make all sentences the same length by adding a special padding token to the sentences that are shorter than the longest one
+3. truncatng inputs - some tensors may be too long for a particular model to process. Hence, we truncate/cut all tensors that pass a specific length.
+```
+encoded_input = tokenizer(original_text, padding=True, truncation=True, max_length=5 #5 tokens, return_tensors="pt")
 ```
