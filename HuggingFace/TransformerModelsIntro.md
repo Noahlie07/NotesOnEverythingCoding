@@ -109,5 +109,45 @@ import torch
 predictions = torch.nn.functional.softmax(outputs.logits, dim=-1)
 print(predictions)
 ```
-Run `model.config.id2label` to find out what each class represents.Then, for each output based on the probabilities, we see which class the model predicts it as.
+Run `model.config.id2label` to find out what each class represents.Then, for each output based on the probabilities, we see which class the model predicts it as.  
+
+#### Example: Logits representing tokens  
+HF has a built-in generate method within model to generate text immediately.
+```
+output = model.generate(
+    **inputs,
+    max_length=100,
+    temperature=0.7,
+    top_k=50,
+    top_p=0.9,
+    do_sample=True,  # Enable sampling
+    num_return_sequences=1,
+    eos_token_id=tokenizer.eos_token_id,
+)
+generated_text = tokenizer.decode(output[0], skip_special_tokens=True)
+```
+
+Alternatively, the under-the-hood mechanism of the generate method is as follows:
+```
+for _ in range(50): # max 50 words
+    outputs = model(input_ids)
+    next_token_logits = outputs.logits[:, -1, :] / 0.7  # Temperature=0.7
+    
+    # Top-k filtering (k=50) - select top 50 most likely token values
+    top_k = 50
+    top_logits, top_indices = next_token_logits.topk(top_k, dim=-1)
+    mask = torch.zeros_like(next_token_logits).scatter_(-1, top_indices, top_logits)
+    next_token_logits = mask
+    
+    probs = torch.softmax(next_token_logits, dim=-1)
+    next_token = torch.multinomial(probs, num_samples=1)
+    
+    input_ids = torch.cat([input_ids, next_token], dim=-1)
+    
+    if next_token == tokenizer.eos_token_id:
+        break
+
+generated_text = tokenizer.decode(input_ids[0], skip_special_tokens=True)
+print(generated_text)
+```
 
