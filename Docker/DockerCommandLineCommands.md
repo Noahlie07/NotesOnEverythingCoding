@@ -15,8 +15,12 @@ docker run --name {name_of_container_to_be_created} -d -p 8080:80 {imagename}:{t
 # where -p maps port 8080 in localhost to port 80 inside the container (Concept of Port Binding). Localhost port can be randoma s long as it isn't in use, but container ports are usually specific. Just search for the default port of a specific container only. (ex. what is the default port for mySQL?)
 # where -d detachs the docker process logs from terminal (making the terminal cleaner)
 # --name to name the container we are creating by running our image
-```  
+```
 
+### Running a Container  
+```
+docker run {name_of_container} {any_additional_command_line_commands_the_container_expects}
+```
 ### Building an Image from a Dockerfile
 ```
 docker build -t {name_of_image_to_be_created} {location_of_docker_file}
