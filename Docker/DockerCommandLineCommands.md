@@ -27,3 +27,8 @@ docker build -t {name_of_image_to_be_created} {location_of_docker_file}
 docker start {containername/containerid}
 docker stop {containername/containerid}
 ```
+
+### Renaming an Image  
+```
+docker tag {name_of_image} {your_username}/{name_of_new_image}
+```
