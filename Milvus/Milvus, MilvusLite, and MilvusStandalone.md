@@ -16,6 +16,15 @@ from pymilvus import MilvusClient
 client = MilvusClient("demoDatabase.db") # To read/write and close the created DB, we conduct functions on the object 'client'
 ```
 
+## Basics of MilvusStandalone  
+```
+
+```
+
+## Operations on Client  
+See https://milvus-io.github.io/milvus-sdk-python/pythondoc/v0.3.0/api.html#client  
+
+
 #### Creating a Collection using create_collection()
 In Milvus, we need a collection to store vectors and their associated metadata. You can think of it as a table in traditional SQL databases.  
 When creating a collection, you can define schema and index params to configure vector specs such as dimensionality, index types and distant metrics.  
