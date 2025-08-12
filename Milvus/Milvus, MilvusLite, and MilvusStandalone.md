@@ -16,10 +16,46 @@ from pymilvus import MilvusClient
 client = MilvusClient("demoDatabase.db") # To read/write and close the created DB, we conduct functions on the object 'client'
 ```
 
+## Creating Schema - CUstomizing the fields in our collection  
+```
+from pymilvus import FieldSchema, CollectionSchema, DataType
+fields = [
+            FieldSchema(name="doc_id", dtype=DataType.INT64, is_primary=True, auto_id=False),
+            FieldSchema(name="embedding", dtype=DataType.FLOAT_VECTOR, dim=512),  # CLIP embedding dimension
+            FieldSchema(name="content", dtype=DataType.VARCHAR, max_length=65535),
+            FieldSchema(name="source", dtype=DataType.VARCHAR, max_length=255),
+            FieldSchema(name="content_type", dtype=DataType.VARCHAR, max_length=50),
+            FieldSchema(name="ref", dtype=DataType.VARCHAR, max_length=255),
+        ]
+schema = CollectionSchema(fields=fields, description="---")
+```
+Alternatively, https://milvus.io/docs/create-collection.md
 ## Basics of MilvusStandalone  
 ```
+from pymilvus import connections
 
+try:
+    connections.connect(host="", port="", timeout=10)
+except MilvusException as e:
+    ...
+
+if utility.has_collection(collection_name):
+    collection = Collection(collection_name)
+else:
+    collection = Collection(collection_name, schema=schema)
+    # Create index for vector field
+        index_params = {
+            "metric_type": "L2",
+            "index_type": "IVF_FLAT",
+            "params": {"nlist": 1024}
+        }
+    collection.create_index(field_name="embedding", index_params=index_params)
+
+# basic operations on collection (collection in this case is kinda similar to client, except that it is an individual collection and only collection-related operations
+collection.load()
+collection.insert()
 ```
+See base64 milvus shi (the one I created while working for HASLA) for more examples  
 
 ## Operations on Client  
 See https://milvus-io.github.io/milvus-sdk-python/pythondoc/v0.3.0/api.html#client  
