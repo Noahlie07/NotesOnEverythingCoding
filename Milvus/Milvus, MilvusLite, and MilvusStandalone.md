@@ -31,6 +31,8 @@ schema = CollectionSchema(fields=fields, description="---")
 ```
 Alternatively, https://milvus.io/docs/create-collection.md
 ## Basics of MilvusStandalone  
+
+When creating a collection, always specify its schema and index params (these params specify how the vector field is stored and how similarity search in the vector field is going to occur.  
 ```
 from pymilvus import connections
 
