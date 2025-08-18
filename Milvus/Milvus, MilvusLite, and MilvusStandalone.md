@@ -5,6 +5,10 @@ Milvus is a vector database that supports local deployment (MilvusLite), single 
 
 Disclaimer: It has its own embedding model, but it is weak, so it is better to use external embedding models.
 Disclaimer: Towhee and Langchain provide pipelines that can automate embedding generation -> storage into Milvus. Worth looking into, ask Deepseek. However, this gives us less control over settings obviously.  
+Disclaimer: Check Milvus Docs -> API Reference -> Python for pymilvus documentation. (https://milvus.io/api-reference/pymilvus/v2.6.x/About.md). Everything below is from there.  
+## Difference Between MilvusClient and Collection  
+A MilvusClient instance represents a Python client that connects to a specific Milvus instance. (https://milvus.io/api-reference/pymilvus/v2.6.x/ORM/Collection/Collection.md)
+A Collection instance represents a Milvus collection. (https://milvus.io/api-reference/pymilvus/v2.6.x/ORM/Collection/Collection.md)
 
 ## Basics of MilvusLite  
 `pip install pymilvus` to download Milvus' Python library  
@@ -33,6 +37,7 @@ Alternatively, https://milvus.io/docs/create-collection.md
 ## Basics of MilvusStandalone  
 
 When creating a collection, always specify its schema and index params (these params specify how the vector field is stored and how similarity search in the vector field is going to occur.  
+In this specific example, we use collection instance, but using MilvusClient should theoretically be possible. 
 ```
 from pymilvus import connections
 
