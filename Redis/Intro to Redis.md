@@ -18,7 +18,7 @@ r.set("key-name", "string")
 string = r.get("key-name")
 print(string.decode('utf-8'))
 ```  
-**storing lists, dictionaries, and list of dictionaries as values** - utilize JSON strings  
+**storing lists, dictionaries, and list of dictionaries as values** - method 1: utilize JSON strings  
 ```
 my_dict = {"key_1":"val_1", "key_n":"val_n"}
 my_dict_json = json.dumps(my_dict)
@@ -32,7 +32,15 @@ my_list_of_dicts = [
 ]
 my_list_of_dicts_json = json.dumps(my_list_of_dicts)
 r.set("key_name", my_list_of_dicts_json)
-```  
+```
+**storing lists** - method 2: utilizing rpush
+RPUSH is a Redis command that inserts one or more specified values at the tail (right end) of a list stored at a given key. I flist does not exist, it will be the first entry.
+LRANGE is a command to return the list
+```
+r.rpush("key-name", value)
+r.lrange("key-name", 0, -1) # whole list
+r.lrange("key-name", 0, 3) # indexes 0, 1, and 2
+```
   
 **storing dictionaries as redis hashes** 
 ```
