@@ -3,6 +3,7 @@
 ## What is Redis?
 Redis is an open-source, in memory (RAM) data structure store. As its in-memory, its frequently used as a caching layer in front of larger databases to store frequently accessed data from memory.  
 Redis supports various data structures in simple **key-value pairs**, including values as lists, sets, sorted sets, hashes, and more.  
+It is frequenlty used in **Multi-Session Supporting** due to its cache nature!
 
 ## Redis Python API/SDK  
 https://redis.io/docs/latest/develop/clients/redis-py/  
@@ -47,4 +48,12 @@ r.lrange("key-name", 0, 3) # indexes 0, 1, and 2
 r.hset("key-name", mapping={"key_1":"val_1", "key_n":"val_n"})
 val_1 = r.hget("key-name", "key_1")
 whole_dict = r.hgetall("key-name")
+```
+
+## Session Timeouts  
+This is vital for multi-session supporting using redis.  
+Using session timeout in Redis primarily involves setting an expiration time (TTL - Time To Live) for the keys that store session data. When a key's TTL expires, Redis automatically deletes it, effectively ending the session.  
+The EXPIRE command sets a timeout on an existing key.  
+```
+r.expire("key_name", 3600) # 3600 seconds TTL, 
 ```
