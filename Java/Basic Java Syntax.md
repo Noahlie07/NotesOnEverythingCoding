@@ -36,7 +36,7 @@ We define them the same way we would an instance, but we add the static keyword.
 static int Variable = 10;
 ```
 ```
-static int myMethod(int arg1, int arg2){
+public static int myMethod(int arg1, int arg2){
   ......
 }
 ```
