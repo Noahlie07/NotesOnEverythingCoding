@@ -13,6 +13,6 @@ Constant names follow SNAKE_CASE with all uppercase letters.
 Curly brackets are used to represent blocks of code. Indentation does not matter.  
 
 ## JDK, JVE, AND JVM  
-JDK: JDK stands for Java Development Kit. It is a set of development tools and libraries used to create Java programs. It works together with the JVM and JRE to run and build Java applications..
-JRE: JRE stands for Java Runtime Environment, and it provides an environment to run Java programs on the system. The environment includes Standard Libraries and JVM.
+JDK: JDK stands for Java Development Kit. It is a set of development tools and libraries used to create Java programs. It works together with the JVM and JRE to run and build Java applications.  
+JRE: JRE stands for Java Runtime Environment, and it provides an environment to run Java programs on the system. The environment includes Standard Libraries and JVM.  
 JVM: JVM stands for Java Virtual Machine. It's responsible for executing the Java program.
