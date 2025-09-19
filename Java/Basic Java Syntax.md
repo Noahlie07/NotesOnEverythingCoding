@@ -53,4 +53,12 @@ public voide increment(){
   instanceVariable++;
 }
 ```
-Actually, it is **not absolutely necessary** to use this. prefix as seen in the second method. It is only necessary if the argument of a method that uses the instance variable has the same as the instance variable, as seen in the first method.
+Actually, it is **not absolutely necessary** to use this. prefix as seen in the second method. It is only necessary if the argument of a method that uses the instance variable has the same as the instance variable, as seen in the first method.  
+
+### The concept of abstract classes  
+Abstract methods have no body and must be overridden in a subclass. They are called using an object of the subclass.
+```
+abstract class SuperClass{
+  abstract void abstractMethod(int arg1);
+}
+```
