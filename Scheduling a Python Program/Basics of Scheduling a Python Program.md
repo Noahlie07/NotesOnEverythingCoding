@@ -1,7 +1,7 @@
 ## What is Scheduling?  
 Scheduling a program means scheduling the program to run automatically at a specific time / time interval.  
 
-In windows, use Task Scheduler:  
+**In windows, use Task Scheduler:**  
 1. Open Task Scheduler → “Create Basic Task”.  
 2. Give it a name (e.g. Run Python Script).  
 3. Choose a trigger (e.g. “Daily”, “At startup”, etc.).  
@@ -12,7 +12,7 @@ ex. C:\Users\<YourName>\AppData\Local\Programs\Python\Python312\python.exe
 "C:\path\to\your_script.py"  
 7. Finish the setup.
 
-In Linux or macOS, use cron scheduler:  
+**In Linux or macOS, use cron scheduler:**  
 A cron schedule, or cron expression, is a string of characters used in Unix-like operating systems (such as Linux and macOS) to define the timing and frequency of automated tasks, known as cron jobs. It allows users to schedule commands or scripts to run at specific times, dates, or intervals.  
 A standard cron expression consists of five fields, representing different units of time:  
 minute hour day_of_month month day_of_week  
@@ -28,7 +28,7 @@ Special Characters:
 - `-` (Hyphen): Defines a range of values. For example, 9-17 in the hour field means "hours 9 through 17."  
 - `/` (Slash): Specifies step values. For example, */10 in the minute field means "every 10 minutes."
   
-Alternatively, there are online or cloud services for scheduling:  
+**Alternatively, there are online or cloud services for scheduling:**  
 We can host our code on GitHub or a server,  
 - GitHub Actions: can run your Python script on a cron schedule.  
 - AWS Lambda, Google Cloud Functions, or Azure Functions with a scheduler (like CloudWatch Events).  
