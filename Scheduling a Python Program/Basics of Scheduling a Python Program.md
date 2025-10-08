@@ -23,9 +23,9 @@ Day of the month (1-31): Specifies the day of the month.
 Month (1-12 or Jan-Dec): Specifies the month of the year.  
 Day of the week (0-7 or Sun-Sat): Specifies the day of the week (both 0 and 7 can represent Sunday).  
 Special Characters:  
-* (Asterisk): Represents "every" unit of time. For example, * in the minute field means "every minute."  
-, (Comma): Separates a list of values. For example, 1,15,30 in the minute field means "at minutes 1, 15, and 30."  
-- (Hyphen): Defines a range of values. For example, 9-17 in the hour field means "hours 9 through 17."  
-/ (Slash): Specifies step values. For example, */10 in the minute field means "every 10 minutes."
+- `*` (Asterisk): Represents "every" unit of time. For example, * in the minute field means "every minute."  
+- `,` (Comma): Separates a list of values. For example, 1,15,30 in the minute field means "at minutes 1, 15, and 30."  
+- `-` (Hyphen): Defines a range of values. For example, 9-17 in the hour field means "hours 9 through 17."  
+- `/` (Slash): Specifies step values. For example, */10 in the minute field means "every 10 minutes."
 
 
