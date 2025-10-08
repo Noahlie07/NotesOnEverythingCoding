@@ -27,5 +27,11 @@ Special Characters:
 - `,` (Comma): Separates a list of values. For example, 1,15,30 in the minute field means "at minutes 1, 15, and 30."  
 - `-` (Hyphen): Defines a range of values. For example, 9-17 in the hour field means "hours 9 through 17."  
 - `/` (Slash): Specifies step values. For example, */10 in the minute field means "every 10 minutes."
+  
+Alternatively, there are online or cloud services for scheduling:  
+We can host our code on GitHub or a server,  
+- GitHub Actions: can run your Python script on a cron schedule.  
+- AWS Lambda, Google Cloud Functions, or Azure Functions with a scheduler (like CloudWatch Events).  
+- Heroku Scheduler for lightweight web apps.
 
 
